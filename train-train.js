@@ -1,5 +1,5 @@
 (function() {
-  var camera, cube, geometry, ground, material, render, renderer, scene;
+  var camera, geometry, ground, material, render, renderer, scene, train;
 
   scene = new THREE.Scene();
 
@@ -22,26 +22,26 @@
 
   ground = new THREE.Mesh(geometry, material);
 
-  ground.rotation.x = Math.PI / -1.8;
+  ground.rotation.x = Math.PI / -2;
 
   scene.add(ground);
 
-  geometry = new THREE.CubeGeometry(1, 1, 1);
+  geometry = new THREE.CubeGeometry(3, 1, 1);
 
   material = new THREE.MeshBasicMaterial({
-    color: 0x00ff00
+    color: 0x777777
   });
 
-  cube = new THREE.Mesh(geometry, material);
+  train = new THREE.Mesh(geometry, material);
 
-  scene.add(cube);
+  train.position.set(0, 0.5, 0);
+
+  scene.add(train);
 
   camera.position.set(0, 2, 5);
 
   render = function() {
     requestAnimationFrame(render);
-    cube.rotation.x += 0.1;
-    cube.rotation.y += 0.1;
     return renderer.render(scene, camera);
   };
 

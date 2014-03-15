@@ -9,22 +9,19 @@ document.body.appendChild(renderer.domElement)
 geometry = new THREE.PlaneGeometry( 50, 50 )
 material = new THREE.MeshBasicMaterial( {color: 0xdddddd, side: THREE.DoubleSide} )
 ground = new THREE.Mesh( geometry, material )
-ground.rotation.x = Math.PI / -1.8;
+ground.rotation.x = Math.PI / -2;
 scene.add( ground )
 
-geometry = new THREE.CubeGeometry(1,1,1)
-material = new THREE.MeshBasicMaterial({color: 0x00ff00})
-cube = new THREE.Mesh(geometry, material)
-scene.add(cube)
+geometry = new THREE.CubeGeometry(3, 1, 1)
+material = new THREE.MeshBasicMaterial({color: 0x777777})
+train = new THREE.Mesh(geometry, material)
+train.position.set(0, 0.5, 0)
+scene.add(train)
 
 camera.position.set(0, 2, 5)
 
 render = () ->
   requestAnimationFrame(render)
-
-  cube.rotation.x += 0.1
-  cube.rotation.y += 0.1
-
   renderer.render(scene, camera)
 
 render()
