@@ -20,7 +20,7 @@ gulp.task('coffee', function() {
 
 gulp.task('lint', function () {
   gulp.src(paths.coffee)
-    .pipe(coffeelint())
+    .pipe(coffeelint("coffeelint.json"))
     .pipe(coffeelint.reporter())
     .pipe(coffeelint.reporter('fail'))
       .on('error', notify.onError());
