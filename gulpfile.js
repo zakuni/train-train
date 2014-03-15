@@ -15,17 +15,15 @@ gulp.task('coffee', function() {
       .on('error', gutil.log)
       .on('error', notify.onError())
     )
-    .pipe(gulp.dest('./'))
-    .pipe(notify());
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('lint', function () {
   gulp.src(paths.coffee)
     .pipe(coffeelint())
     .pipe(coffeelint.reporter())
-    .pipe(notify())
     .pipe(coffeelint.reporter('fail'))
-      .on('error', notify.onError())
+      .on('error', notify.onError());
 });
 
 gulp.task('watch', function() {
