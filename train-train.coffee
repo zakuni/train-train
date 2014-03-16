@@ -34,7 +34,7 @@ scene.add(train)
 geometry = new THREE.CubeGeometry(3, 5, 5)
 material = new THREE.MeshLambertMaterial({color: 0xffffff})
 building = new THREE.Mesh(geometry, material)
-building.position.set(0, 3, -5)
+building.position.set(0, 2.5, -5)
 building.castShadow = true
 building.receiveShadow = true
 scene.add(building)
