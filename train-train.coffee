@@ -20,7 +20,7 @@ scene.add( directionalLight )
 geometry = new THREE.PlaneGeometry( 50, 50 )
 material = new THREE.MeshLambertMaterial( {color: 0x703000} )
 ground = new THREE.Mesh( geometry, material )
-ground.rotation.x = Math.PI / -2;
+ground.rotation.x = Math.PI / -2
 ground.receiveShadow = true
 scene.add( ground )
 
