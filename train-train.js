@@ -5,6 +5,8 @@
 
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
+  camera.inside = false;
+
   renderer = new THREE.WebGLRenderer();
 
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -76,6 +78,19 @@
   scene.add(building);
 
   camera.position.set(0, 8, 12);
+
+  document.addEventListener("keydown", function(e) {
+    var keyCode;
+    keyCode = e.which;
+    if (keyCode === 32) {
+      if (camera.inside) {
+        camera.position.set(0, 8, 12);
+      } else {
+        camera.position.set(0, 1, 1);
+      }
+      return camera.inside = !camera.inside;
+    }
+  }, false);
 
   render = function() {
     requestAnimationFrame(render);
