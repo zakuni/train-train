@@ -8,7 +8,6 @@ renderer.shadowMapEnabled = true
 document.body.appendChild(renderer.domElement)
 
 light = new THREE.AmbientLight( 0x808080 )
-light.castShadow = true
 scene.add( light )
 
 directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 )
