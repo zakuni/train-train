@@ -1,5 +1,5 @@
 (function() {
-  var building, camera, directionalLight, geometry, ground, light, material, render, renderer, scene, train;
+  var building, camera, directionalLight, geometry, ground, light, material, render, renderer, scene, toggleDebugMode, train;
 
   scene = new THREE.Scene();
 
@@ -26,8 +26,6 @@
   directionalLight.position.set(0, 100, 50);
 
   directionalLight.castShadow = true;
-
-  directionalLight.shadowCameraVisible = true;
 
   scene.add(directionalLight);
 
@@ -89,8 +87,14 @@
         camera.position.set(0, 1, 1);
       }
       return camera.inside = !camera.inside;
+    } else if (keyCode === 68) {
+      return toggleDebugMode();
     }
   }, false);
+
+  toggleDebugMode = function() {
+    return directionalLight.shadowCameraVisible = !directionalLight.shadowCameraVisible;
+  };
 
   render = function() {
     requestAnimationFrame(render);

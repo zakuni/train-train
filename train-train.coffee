@@ -14,7 +14,6 @@ scene.add( light )
 directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 )
 directionalLight.position.set( 0, 100, 50 )
 directionalLight.castShadow = true
-directionalLight.shadowCameraVisible = true
 scene.add( directionalLight )
 
 geometry = new THREE.PlaneGeometry( 50, 50 )
@@ -43,13 +42,18 @@ camera.position.set(0, 8, 12)
 
 document.addEventListener("keydown", (e)->
   keyCode = e.which
-  if(keyCode is 32) #space key
+  if keyCode is 32 #space key
     if camera.inside
       camera.position.set(0, 8, 12)
     else
       camera.position.set(0, 1, 1)
     camera.inside = !camera.inside
+  else if keyCode is 68 #d
+    toggleDebugMode()
 , false)
+
+toggleDebugMode = ->
+  directionalLight.shadowCameraVisible = !directionalLight.shadowCameraVisible
 
 render = () ->
   requestAnimationFrame(render)
