@@ -5,7 +5,9 @@
 
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-  camera.inside = false;
+  camera.inside = true;
+
+  camera.position.set(0, 1, 1);
 
   renderer = new THREE.WebGLRenderer();
 
@@ -75,12 +77,12 @@
 
   scene.add(building);
 
-  camera.position.set(0, 8, 12);
-
   document.addEventListener("keydown", function(e) {
     var keyCode;
     keyCode = e.which;
     if (keyCode === 32) {
+
+    } else if (keyCode === 67) {
       if (camera.inside) {
         camera.position.set(0, 8, 12);
       } else {
