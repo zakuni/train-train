@@ -42,14 +42,14 @@ scene.add(building)
 camera.position.set(0, 8, 12)
 
 document.addEventListener("keydown", (e)->
-    keyCode = e.which
-    if(keyCode is 32) #space key
-      if camera.inside
-        camera.position.set(0, 8, 12)
-      else
-        camera.position.set(0, 1, 1)
-      camera.inside = !camera.inside
-  , false)
+  keyCode = e.which
+  if(keyCode is 32) #space key
+    if camera.inside
+      camera.position.set(0, 8, 12)
+    else
+      camera.position.set(0, 1, 1)
+    camera.inside = !camera.inside
+, false)
 
 render = () ->
   requestAnimationFrame(render)
