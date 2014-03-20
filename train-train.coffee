@@ -1,6 +1,7 @@
 scene = new THREE.Scene()
 camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000)
-camera.inside = false
+camera.inside = true
+camera.position.set(0, 1, 1)
 
 renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
@@ -38,11 +39,10 @@ building.castShadow = true
 building.receiveShadow = true
 scene.add(building)
 
-camera.position.set(0, 8, 12)
-
 document.addEventListener("keydown", (e)->
   keyCode = e.which
   if keyCode is 32 #space key
+  else if keyCode is 67 #c
     if camera.inside
       camera.position.set(0, 8, 12)
     else
