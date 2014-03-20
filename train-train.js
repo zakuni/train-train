@@ -59,6 +59,8 @@
 
   train.castShadow = true;
 
+  train.running = false;
+
   scene.add(train);
 
   geometry = new THREE.CubeGeometry(3, 5, 5);
@@ -81,12 +83,12 @@
     var keyCode;
     keyCode = e.which;
     if (keyCode === 32) {
-
+      return train.running = !train.running;
     } else if (keyCode === 67) {
       if (camera.inside) {
         camera.position.set(0, 8, 12);
       } else {
-        camera.position.set(0, 1, 1);
+        camera.position.set(train.position.x, 1, 1);
       }
       return camera.inside = !camera.inside;
     } else if (keyCode === 68) {
@@ -100,7 +102,12 @@
 
   render = function() {
     requestAnimationFrame(render);
-    train.position.x += 0.1;
+    if (train.running) {
+      train.position.x += 0.1;
+      if (camera.inside) {
+        camera.position.set(train.position.x, 1, 1);
+      }
+    }
     return renderer.render(scene, camera);
   };
 

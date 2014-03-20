@@ -29,6 +29,7 @@ material = new THREE.MeshLambertMaterial({color: 0xeeeeff, transparent: true, op
 train = new THREE.Mesh(geometry, material)
 train.position.set(0, 0.5, 0)
 train.castShadow = true
+train.running = false
 scene.add(train)
 
 geometry = new THREE.CubeGeometry(3, 5, 5)
@@ -42,11 +43,12 @@ scene.add(building)
 document.addEventListener("keydown", (e)->
   keyCode = e.which
   if keyCode is 32 #space key
+    train.running = !train.running
   else if keyCode is 67 #c
     if camera.inside
       camera.position.set(0, 8, 12)
     else
-      camera.position.set(0, 1, 1)
+      camera.position.set(train.position.x, 1, 1)
     camera.inside = !camera.inside
   else if keyCode is 68 #d
     toggleDebugMode()
@@ -57,7 +59,10 @@ toggleDebugMode = ->
 
 render = () ->
   requestAnimationFrame(render)
-  train.position.x += 0.1
+  if train.running
+    train.position.x += 0.1
+    if camera.inside
+      camera.position.set(train.position.x, 1, 1)
   renderer.render(scene, camera)
 
 render()
