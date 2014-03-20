@@ -57,6 +57,7 @@ toggleDebugMode = ->
 
 render = () ->
   requestAnimationFrame(render)
+  train.position.x += 0.1
   renderer.render(scene, camera)
 
 render()

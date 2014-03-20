@@ -98,6 +98,7 @@
 
   render = function() {
     requestAnimationFrame(render);
+    train.position.x += 0.1;
     return renderer.render(scene, camera);
   };
 
